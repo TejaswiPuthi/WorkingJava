@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class CustomerOrdersList {
-List<CustomerDeliveryInformation> customerOrderList = new ArrayList<CustomerDeliveryInformation>();
+public static List<CustomerDeliveryInformation> customerOrderList = new ArrayList<CustomerDeliveryInformation>();
 	
 	public List<CustomerDeliveryInformation> getCustomerOrderList() {
 		return customerOrderList;
@@ -13,5 +13,6 @@ List<CustomerDeliveryInformation> customerOrderList = new ArrayList<CustomerDeli
 
 	public void addCustomerOrder(CustomerDeliveryInformation customerDelivery) {
 		customerOrderList.add(customerDelivery);
+//		System.out.println(customerOrderList);
 	}
 }

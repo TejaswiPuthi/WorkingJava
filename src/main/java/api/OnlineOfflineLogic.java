@@ -13,7 +13,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 public class OnlineOfflineLogic {
 	
 	
-	
+	CustomerOrdersList list = new CustomerOrdersList();
 	//converting string to object
 	CustomerDeliveryInformation delivery = new CustomerDeliveryInformation();
 	public OnlineOfflineLogic() {
@@ -84,12 +84,14 @@ public class OnlineOfflineLogic {
 		return false;
 	}
 	
-	public int addCustomerOrder(Date date) {
+	public int addCustomerOrder(Date date,String type) {
 		
-		CustomerOrdersList list = new CustomerOrdersList();
+		
 		delivery.setOrderTime(date);
+//		System.out.println(list.getCustomerOrderList().size());
 		int order_id = (list.getCustomerOrderList().size())+1;
 		delivery.setOrderId(order_id);
+		delivery.setOrderType(type);
 		list.addCustomerOrder(delivery);
 		return order_id;
 		

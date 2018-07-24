@@ -8,3 +8,4 @@ main/java/api/OrderService.class
 main/java/api/JerseyHelloWorldService.class
 main/java/api/CustomerDeliveryInformation.class
 main/java/api/CustomerOrdersList.class
+main/java/api/StatisticsService.class
