@@ -12,31 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.json.JSONObject;
-//import java.util.Calendar;
-//import java.util.Date;
-//import java.util.GregorianCalendar;
-//
-//import javax.ws.rs.FormParam;
-//import javax.ws.rs.GET;
-//import javax.ws.rs.POST;
-//import javax.ws.rs.Path;
-//import javax.ws.rs.Produces;
-//import javax.ws.rs.core.MediaType;
-//
-//import com.howtodoinjava.logic.OnlineOfflineLogic;
-//import com.howtodoinjava.pojo.Response;
 
-//import java.util.Calendar;
-//import java.util.Date;
-//import java.util.GregorianCalendar;
-//
-//import javax.ws.rs.FormParam;
-//import javax.ws.rs.GET;
-//import javax.ws.rs.POST;
-//import javax.ws.rs.Path;
-//import javax.ws.rs.Produces;
-//import javax.ws.rs.core.MediaType;
-//
 //
 @Path("Order")
 public class OrderService {
@@ -98,7 +74,7 @@ public class OrderService {
 			else if(current_hour > 10 && current_hour <22) {
 				if(!logic.ifValidCoupon()) {
 					int order_id = logic.addCustomerOrder(date,"Online");
-					
+					logic.addProductOrder();
 					result.setCode(200);
 					result.setMessage("Order ID: " + order_id);
 					return result;
@@ -127,16 +103,17 @@ public class OrderService {
 		if(logic.ifValidCustomer()) {
 			calendar.setTime(date);
 			int current_hour = calendar.get(Calendar.HOUR_OF_DAY);
-//			System.out.println(current_hour); 
+			
+			System.out.println(current_hour); 
 			if(current_hour > 8 && current_hour <10) {	
 					result.setCode(400);
 					result.setMessage("Offline Orders not accepted at this moment");
 					return result;
 			}
-			else if (current_hour >= 10 && current_hour <22) {
+			else if (current_hour >= 10 && current_hour <24) {
 				if(!logic.ifValidCoupon()) {
 					int order_id = logic.addCustomerOrder(date,"Offline");
-					
+					logic.addProductOrder();
 					result.setCode(200);
 					result.setMessage("Order ID: " + order_id);
 					return result;

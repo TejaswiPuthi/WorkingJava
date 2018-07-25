@@ -2,6 +2,7 @@ package main.java.api;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -97,5 +98,32 @@ public class OnlineOfflineLogic {
 		
 	}
 	
-
+	public void addProductOrder() {
+		int flag;
+		List<Order> orders = delivery.getOrders();
+		ProductList list = new ProductList();
+		List<Product> products = list.getProducts();
+		ProductOrdersList ordersList = new ProductOrdersList();
+		List<Product> orderList_products = ordersList.getProductOrderList();
+		for (Order order: orders) {
+			flag = 0;
+			int id = order.getProductId();
+			for (Product p: orderList_products) {
+				if(p.getProductId() == id) {
+					p.setProductQuantity(p.getProductQuantity()+order.getProductQuntity());
+					flag = 1;
+					break;
+				}
+			}
+			if(flag == 0) {
+			for(Product product: products) {
+				if(product.getProductId() == id) {
+					product.setProductQuantity(product.getProductQuantity()+order.getProductQuntity());
+					ordersList.addProduct(product);
+				}
+			}
+		}
+	}
+	
+	}
 }

@@ -17,8 +17,14 @@ public class StatisticsService {
 	CustomerOrdersList orders = new CustomerOrdersList();
 	List<CustomerDeliveryInformation> ordersList;
 	
-//	@POST
-//	@Path("/getStatisticsOnOrderProduct")s
+	@POST
+	@Path("/getStatisticsOnOrderProduct")
+	@Produces("application/json")
+	public List<Product> productList(){
+		ProductOrdersList orderList = new ProductOrdersList();
+		System.out.println(orderList.getProductOrderList());
+		return(orderList.getProductOrderList());
+	}
 	
 	
 	@POST
